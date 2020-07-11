@@ -133,8 +133,7 @@ class CommentsService extends Component
         $jsVariables = [
             'baseUrl' => $actionUrl,
             'csrfTokenName' => Craft::$app->getConfig()->getGeneral()->csrfTokenName,
-            //'csrfToken' => Craft::$app->getRequest()->getCsrfToken(),
-            'csrfToken' => fetch('/actions/blitz/csrf/token').then(result => { return result.text(); }),
+            'csrfToken' => Craft::$app->getRequest()->getCsrfToken(),
             'recaptchaEnabled' => (bool)$settings->recaptchaEnabled,
             'recaptchaKey' => $settings->recaptchaKey,
             'translations' => [
