@@ -60,7 +60,7 @@ class CommentsVariable
 
         echo '<script src="' . $url . '"></script>';
 
-        echo '<script>document.addEventListener('afterBlitzInjectAll', function (event) { new Comments.Instance(' .
+        echo '<script>document.addEventListener("afterBlitzInjectAll", function (event) { new Comments.Instance(' .
             Json::encode('#' . $id, JSON_UNESCAPED_UNICODE) . ', ' .
             Json::encode($jsVariables, JSON_UNESCAPED_UNICODE) .
         '); });</script>';
