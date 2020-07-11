@@ -53,11 +53,14 @@ class CommentsVariable
     {
         $view = Craft::$app->getView();
 
-        $url = Craft::$app->getAssetManager()->getPublishedUrl('@verbb/comments/resources/src/js/comments.js', true);
+        $urlBase = Craft::$app->getAssetManager()->getPublishedUrl('@verbb/comments/resources/dist/js/_base.js', true);
+
+        $url = Craft::$app->getAssetManager()->getPublishedUrl('@verbb/comments/resources/dist/js/comments.js', true);
         
         $id = 'cc-w-' . $elementId;
         $jsVariables = Comments::$plugin->getComments()->getRenderJsVariables($id, $elementId, $criteria);
 
+        echo '<script src="' . $urlBase . '"></script>';
         echo '<script src="' . $url . '"></script>';
 
         echo '<script>document.addEventListener("afterBlitzInjectAll", function (event) { new Comments.Instance(' .
