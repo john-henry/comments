@@ -54,8 +54,10 @@ Comments.Base = Base.extend({
     serialize: function(form) {
         var formData = new FormData(form);
 
+        let blitzToken = fetch('/actions/blitz/csrf/token');
+
         // Add CSRF to each request
-        formData.append(Comments.csrfTokenName, Comments.csrfToken);
+        formData.append(Comments.csrfTokenName, blitzToken.text);
 
         return formData;
     },
@@ -65,8 +67,10 @@ Comments.Base = Base.extend({
             return encodeURIComponent(key) + '=' + encodeURIComponent(json[key]);
         });
 
+        let blitzToken = fetch('/actions/blitz/csrf/token');
+
         // Add CSRF to each request
-        qs.push(encodeURIComponent(Comments.csrfTokenName) + "=" + encodeURIComponent(Comments.csrfToken));
+        qs.push(encodeURIComponent(Comments.csrfTokenName) + "=" + encodeURIComponent(blitzToken.text));
 
         return qs.join('&');
     },
